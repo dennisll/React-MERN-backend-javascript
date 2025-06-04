@@ -14,7 +14,13 @@ const getEventos = async( req, res = response ) => {
 
 const crearEvento = async ( req, res = response ) => {
 
-    const evento = new Evento( req.body );
+    const eventData = {
+        ...req.body,
+        start: new Date( req.body.start),
+        end: new Date( req.body.end),
+    }
+
+    const evento = new Evento( eventData );
 
     try {
 
